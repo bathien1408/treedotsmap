@@ -1,0 +1,41 @@
+/* stylelint-disable-next-line block-no-empty */
+.home-page{
+    .header{
+        font-weight: bold;
+    }
+    .list-hub{
+        padding: 10px;
+        h1 {
+            font-weight: bold;
+        }
+        table {
+            tr {
+                line-height: 24px;
+                min-height: 60px;
+                height: 60px;
+                td {
+                    padding: 12px;
+                    color: gray;
+                }
+            }
+
+        }
+    }
+    .label-circle {
+        height: 26px;
+        width: 26px;
+        background: orange;
+        border-radius: 12px;
+        text-align: center;
+        color: whitesmoke;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .btn-search, .btn-search:hover {
+        font-size: 20px;
+        background-color: #f2f6fa;
+        color: black;
+        border: none;
+    }
+}
+
