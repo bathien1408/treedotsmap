@@ -34,7 +34,7 @@ export default {
             this.dataHub[index]['label'] = this.anphabetIndex(index);
             this.dataHub[index]['visible'] = true;
         }
-        
+
         // End loading  page for get location hub
         this.isFetching = true;
         this.$loading(false);
@@ -46,7 +46,7 @@ export default {
          * @returns {string} 
          */
         anphabetIndex: function (index) {
-            return String.fromCharCode(index +65);
+            return String.fromCharCode(index + 65);
         },
         /*
          * Event function when select hub 
@@ -54,12 +54,21 @@ export default {
          * @returns {null} 
          */
         selectHub: function (index) {
-            // Reset all hub to unselect
-            for (let indexHub = 0; indexHub < this.dataHub.length; indexHub++) {
-                this.dataHub[indexHub]['visible'] = true;
-            }
+           
+
             // Set  selected hub to unvisible
-            this.dataHub[index]['visible'] = false;
+            if (this.dataHub[index]['visible'] == false) {
+                // Case unselect
+                this.dataHub[index]['visible'] = true;
+            } else {
+                // Case select
+                 // Reset all hub to unselect
+                for (let indexHub = 0; indexHub < this.dataHub.length; indexHub++) {
+                    this.dataHub[indexHub]['visible'] = true;
+                }
+                this.dataHub[index]['visible'] = false;
+            }
+
             // Update map
             this.$refs.gmap.$forceUpdate();
             // Pan map to hub location
