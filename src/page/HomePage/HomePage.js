@@ -1,6 +1,6 @@
 
 import gmap from "../../component/gmap/";
-import  data from './dataHubReponse.json';
+import  data from '../../data/dataHubReponse.json';
 import axios from "axios";
 
 const urlApiGetLocation = "https://maps.googleapis.com/maps/api/geocode/json?address=";
@@ -17,24 +17,24 @@ export default {
         }
     },
     created: async function () {
-        let  _this = this;
         // Start loading  page for get location hub
         this.$loading(true);
-        for (let index = 0; index < _this.dataHub.length; index++) {
+
+        for (let index = 0; index < this.dataHub.length; index++) {
             let linkQuery =
                     urlApiGetLocation +
-                    encodeURIComponent(_this.dataHub[index].road) +
-                    "&key=" + _this.$config._config.gmapApiKey;
+                    encodeURIComponent(this.dataHub[index].road) +
+                    "&key=" + this.$config._config.gmapApiKey;
             // Call API gmap to get lat and lng from address 
             let {
                 data
             } = await axios.get(linkQuery);
             // Add location info to dataHub
-            _this.dataHub[index]['location'] = data.results[0].geometry.location;
-            _this.dataHub[index]['label'] = _this.anphabetIndex(index);
-            _this.dataHub[index]['visible'] = true;
-
+            this.dataHub[index]['location'] = data.results[0].geometry.location;
+            this.dataHub[index]['label'] = this.anphabetIndex(index);
+            this.dataHub[index]['visible'] = true;
         }
+        
         // End loading  page for get location hub
         this.isFetching = true;
         this.$loading(false);
@@ -46,7 +46,7 @@ export default {
          * @returns {string} 
          */
         anphabetIndex: function (index) {
-            return (index + 10).toString(36).toUpperCase();
+            return String.fromCharCode(index +65);
         },
         /*
          * Event function when select hub 

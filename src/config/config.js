@@ -34,7 +34,7 @@ const config = {
   urls: {
     [URLNames.API]: `${process.env.PUBLIC_PATH}api/`,
   },
-  gmapApiKey : 'AIzaSyDRuz17aMnyo5-qmyvsnSuMYWbO205ePKc',
+  gmapApiKey : 'AIzaSyBtukKBcRVNCDdwe3zWXjBxIE1QcrwKrtE',
   properties: {
     [PropertyNames.DEFAULT_LOCALE]: 'en-gb',
     [PropertyNames.AVAILABLE_LOCALES]: ['en-gb', 'en-us'],
